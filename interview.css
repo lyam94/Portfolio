@@ -1,0 +1,253 @@
+/* Reset de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #4a0e1b; /* Le rouge bordeaux sombre */
+    color: white;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Conteneur principal */
+.container {
+    max-width: 600px;
+    width: 100%;
+}
+
+/* --- Bouton Retour --- */
+header {
+    margin-bottom: 40px;
+}
+
+.btn-retour {
+    display: inline-block;
+    border: 1px solid white;
+    padding: 8px 25px;
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+}
+
+.btn-retour:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* --- Section Hero (Titre + Vidéo) --- */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Aligne le texte en haut avec la vidéo */
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.hero-text {
+    flex: 1;
+    padding-top: 5px;
+}
+
+.hero-text h1 {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 3.5rem;
+    font-weight: 400;
+    line-height: 1;
+}
+
+.hero-text h2 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-size: 1.5rem;
+    margin-top: 5px;
+}
+
+/* --- Configuration de la Vidéo YouTube --- */
+.hero-video {
+    flex: 0 0 55%; /* La vidéo prend 55% de la largeur */
+    max-width: 600px;
+}
+
+.hero-video iframe {
+    width: 100%;
+    aspect-ratio: 16/9; /* Force le format rectangulaire standard */
+    border: none;
+    border-radius: 8px; /* Arrondit les angles */
+    display: block;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* --- Styles pour les boîtes à bordure blanche --- */
+.bordered-box {
+    border: 1px solid rgba(255, 255, 255, 0.4); /* J'ai remis la bordure ici */
+    padding: 20px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+}
+
+.bordered-box p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    text-align: justify;
+}
+
+.bordered-box h3 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+/* --- Grille pour Détails et Outils --- */
+.grid-section {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Styles spécifiques Outils */
+.tools {
+    display: flex;
+    flex-direction: column;
+}
+
+.icons-container {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+/* Création des icônes Adobe en CSS pur */
+.icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.icon.ps {
+    background-color: #001e36;
+    color: #31a8ff;
+    border: 1px solid #31a8ff;
+}
+
+.icon.pr {
+    background-color: #00005b;
+    color: #dcb6f5;
+    border: 1px solid #dcb6f5;
+}
+
+.project-link {
+    color: white;
+    text-decoration: none;
+    margin-top: auto;
+    font-size: 1rem;
+}
+
+.project-link:hover {
+    text-decoration: underline;
+}
+
+/* --- Footer Galerie (Miniatures en bas) --- */
+.gallery {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Style pour les miniatures du bas uniquement */
+.video-thumb {
+    background-color: #ddd;
+    width: 100%;
+    aspect-ratio: 16/9;
+    border-radius: 8px;
+    background-image: url('https://placehold.co/600x400/888/333?text=Video');
+    background-size: cover;
+    background-position: center;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column-reverse; /* Vidéo au-dessus sur mobile */
+        align-items: flex-start;
+    }
+    
+    .hero-video {
+        width: 100%;
+        flex: none;
+    }
+
+    .grid-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Styles pour le faux lecteur vidéo --- */
+.fake-player {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16/9; /* Force le format vidéo standard */
+    position: relative;
+    border-radius: 10px; /* Un peu d'arrondi comme sur tes autres éléments */
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.fake-player img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+/* Effet de zoom sur l'image au survol */
+.fake-player:hover img {
+    transform: scale(1.05);
+    opacity: 0.8;
+}
+
+/* Le bouton Play au centre */
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px;
+    height: 70px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 2px solid #EDD60A; /* Ton jaune Arcane */
+    color: #EDD60A;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    padding-left: 6px; /* Petit ajustement pour centrer le triangle visuellement */
+    transition: all 0.3s ease;
+}
+
+/* Animation du bouton au survol */
+.fake-player:hover .play-button {
+    background-color: #EDD60A;
+    color: black;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+
+.contexte-video-wrapper{margin-top:100px;flex:1;position:relative;overflow:hidden;align-self:stretch}
+.video-embed-container{position:relative;width:100%;padding-top:56.25%}
+.video-embed-container iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}

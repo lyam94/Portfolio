@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qui suis-je - Portfolio Lyam</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #5e0d16;
+            color: white;
+            font-family: 'Playfair Display', serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden; /* Important pour éviter le scroll horizontal */
+        }
+
+        .main-container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 50px;
+            margin-left: 0; /* Ajusté */
+            font-weight: 400;
+        }
+
+        .content-wrapper {
+            position: relative;
+            display: flow-root; 
+            width: 100%;
+        }
+
+        /* --- L'IMAGE CENTRALE --- */
+        /* Elle fait 350px + 20px de bordure totale = 370px de large */
+        .center-photo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+             
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            overflow: hidden;
+            
+            top: 0;
+            pointer-events: none; /* Permet de sélectionner le texte si ça dépasse un peu */
+        }
+
+        .center-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- CONFIGURATION DES COLONNES --- */
+        .text-col {
+            width: 50%;
+            box-sizing: border-box;
+            font-size: 1.15rem;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* --- COLONNE GAUCHE --- */
+        .left {
+            float: left;
+            
+            /* Pas de padding-right pour que le texte colle au max */
+        }
+
+        /* LE FANTÔME GAUCHE - TAILLE COMPLÈTE */
+        .left::before {
+            content: "";
+            float: right;
+            
+            /* Taille totale de la div photo (Image + Bordure) */
+            width: 600px; 
+            height: 600px;
+            
+            /* Forme : un cercle complet */
+            shape-outside: circle(50%); 
+            
+            /* ASTUCE : On le décale de la moitié de sa largeur vers la droite */
+            margin-right: -250px; 
+            
+            /* Ajustement vertical si besoin pour que le texte commence plus bas */
+            margin-top: 5px; 
+        }
+
+        /* --- COLONNE DROITE --- */
+        .right {
+            float: right;
+        }
+
+        /* LE FANTÔME DROIT - TAILLE COMPLÈTE */
+        .right::before {
+            content: "";
+            float: left;
+            
+            /* Taille totale */
+            width: 600px;
+            height: 600px;
+            
+            /* Forme */
+            shape-outside: circle(50%);
+            
+            /* ASTUCE : On le décale de la moitié de sa largeur vers la gauche */
+            margin-left: -250px;
+            
+            margin-top: 5px;
+        }
+
+        /* --- MOBILE --- */
+        @media (max-width: 950px) {
+            .content-wrapper { display: flex; flex-direction: column; align-items: center; }
+            .center-photo { position: relative; left: auto; transform: none; margin-bottom: 30px; }
+            .text-col { width: 100%; float: none; text-align: left; padding: 0 10px; }
+            .left::before, .right::before { display: none; } /* On désactive l'effet sur mobile */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <h1>Qui suis-je</h1>
+
+        <div class="content-wrapper">
+            
+            <div class="center-photo">
+                <img src="perso.ng" alt="Portrait">
+            </div>  
+
+            <div class="text-col left">
+                <p>
+                    Je m'appelle Lyam. À 20 ans, j'ai trouvé mon terrain de jeu idéal dans le BUT MMI, et plus particulièrement dans le parcours Création Numérique.
+                    <br><br>
+                    Ce qui m'anime ? C'est le mélange entre la technique et l'artistique. D'un côté, j'aime l'aspect concret et logique du code web Front-end, et de l'autre, j'exprime ma créativité par l'audiovisuel.
+                    <br><br>
+                    J'aime l'idée de pouvoir construire un projet de A à Z, de l'image à l'interface, en soignant chaque détail pour un rendu professionnel.
+                </p>
+            </div>
+
+            <div class="text-col right">
+                <p>
+                    Je maîtrise l'ensemble de la suite Adobe, notamment Photoshop, Illustrator, InDesign, Premiere Pro et After Effects, ce qui me permet de concevoir des supports visuels variés, créatifs et adaptés aux différents médias.
+                    <br><br>
+                    Je possède également de solides compétences en développement web, avec la maîtrise des langages HTML, CSS, JavaScript et PHP, me permettant de créer des sites web dynamiques, performants et responsives.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

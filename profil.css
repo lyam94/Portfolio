@@ -1,0 +1,252 @@
+/* Reset de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #4a0510; /* Le fond bordeaux foncé */
+    color: white;
+    font-family: 'Poppins', sans-serif; /* Police pour le corps du texte */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.main-container {
+    width: 90%;
+    max-width: 1400px;
+    padding: 60px;
+}
+
+/* Style du Titre */
+.title {
+    font-family: 'Playfair Display', serif; /* Police élégante avec empattement */
+    font-size: 6rem;
+    font-weight: 400;
+    margin-bottom: 40px;
+    font-style: italic; /* Pour le look "Qui suis-je" */
+    line-height: 1;
+}
+
+/* Mise en page : Gauche (Image) / Droite (Texte) */
+.content-wrapper {
+    display: flex;
+    flex-wrap: wrap; /* Pour passer en colonne sur mobile */
+    align-items: center;
+    justify-content: space-between;
+    gap: 80px;
+}
+
+/* --- SECTION TEXTE --- */
+.text-section {
+    flex: 1;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: justify;
+    min-width: 350px;
+}
+
+.text-section p {
+    margin-bottom: 30px;
+}
+
+/* --- SECTION GRAPHIQUE (La photo + les icônes) --- */
+.graphic-section {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0; /* Empêche le cercle de s'écraser */
+}
+
+/* La photo centrale */
+.photo-container {
+    width: 380px;
+    height: 380px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #ccc; /* Couleur de fond si l'image ne charge pas */
+    z-index: 10;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.profile-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Style commun pour toutes les icônes */
+.icon {
+    position: absolute;
+    width: 50px; /* Taille approximative des logos */
+    height: auto;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.5));
+    transition: transform 0.3s ease;
+}
+
+.icon:hover {
+    transform: scale(1.1);
+    z-index: 20;
+}
+
+/* --- POSITIONNEMENT DES ICÔNES --- */
+/* J'utilise top/left en % pour placer les éléments autour du cercle central */
+
+/* Adobe Suite (Haut) */
+.ps { top: 25%; left: 8%; transform: rotate(-20deg); width: 70px; }
+.pr { top: 10%; left: 22%; transform: rotate(-10deg); width: 70px; }
+.ae { top: 5%;  left: 45%; transform: rotate(0deg);   width: 70px; }
+.id { top: 10%; right: 22%; transform: rotate(10deg);  width: 70px; }
+.ai { top: 25%; right: 8%; transform: rotate(20deg);  width: 70px; }
+
+/* Web Dev (Bas) */
+.wp { bottom: 25%; left: 5%;  transform: rotate(0deg); width: 75px; }
+.js { bottom: 10%; left: 18%; transform: rotate(-15deg); width: 70px; }
+.css{ bottom: 2%; left: 45%;  transform: rotate(0deg); width: 60px; } /* L'icône CSS est souvent plus haute */
+.html{ bottom: 10%; right: 18%; transform: rotate(15deg); width: 65px; }
+.php{ bottom: 25%; right: 5%;  transform: rotate(20deg); width: 80px; }
+
+
+/* --- RESPONSIVE (Tablette) --- */
+@media (max-width: 1024px) {
+    .main-container {
+        padding: 40px;
+    }
+    
+    .title {
+        font-size: 5rem;
+    }
+    
+    .graphic-section {
+        width: 500px;
+        height: 500px;
+    }
+    
+    .photo-container {
+        width: 320px;
+        height: 320px;
+    }
+    
+    .text-section {
+        font-size: 1rem;
+        min-width: 300px;
+    }
+    
+    .content-wrapper {
+        gap: 50px;
+    }
+    
+    /* Icônes un peu plus petites */
+    .ps, .pr, .ae, .id, .ai { width: 60px; }
+    .wp { width: 65px; }
+    .js { width: 60px; }
+    .css { width: 50px; }
+    .html { width: 55px; }
+    .php { width: 70px; }
+}
+
+/* --- RESPONSIVE (Mobile large) --- */
+@media (max-width: 900px) {
+    .content-wrapper {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+    
+    .text-section {
+        text-align: justify;
+        min-width: unset;
+        width: 100%;
+    }
+    
+    .graphic-section {
+        width: 450px;
+        height: 450px;
+    }
+    
+    .photo-container {
+        width: 280px;
+        height: 280px;
+    }
+
+    .title {
+        text-align: center;
+        font-size: 4rem;
+    }
+    
+    .main-container {
+        padding: 30px 20px;
+    }
+}
+
+/* --- RESPONSIVE (Mobile) --- */
+@media (max-width: 600px) {
+    .title {
+        font-size: 3rem;
+        margin-bottom: 30px;
+    }
+    
+    .graphic-section {
+        width: 350px;
+        height: 350px;
+    }
+    
+    .photo-container {
+        width: 220px;
+        height: 220px;
+    }
+    
+    .text-section {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    .text-section p {
+        margin-bottom: 20px;
+    }
+    
+    /* Icônes plus petites sur mobile */
+    .ps, .pr, .ae, .id, .ai { width: 45px; }
+    .wp { width: 50px; }
+    .js { width: 45px; }
+    .css { width: 40px; }
+    .html { width: 45px; }
+    .php { width: 55px; }
+}
+
+/* --- RESPONSIVE (Très petit mobile) --- */
+@media (max-width: 400px) {
+    .title {
+        font-size: 2.5rem;
+    }
+    
+    .graphic-section {
+        width: 280px;
+        height: 280px;
+    }
+    
+    .photo-container {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .text-section {
+        font-size: 0.9rem;
+    }
+    
+    .main-container {
+        padding: 20px 15px;
+    }
+    
+    /* Icônes encore plus petites */
+    .icon { width: 35px !important; }
+    .wp { width: 40px !important; }
+    .php { width: 45px !important; }
+}
